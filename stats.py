@@ -19,16 +19,20 @@ def get_book_wordCount(filePathToBook):
 # Provides the total character count broken down in the book
 def get_book_charCounts(filePathToBook):
   returnContentString = ""
-  returnContentCharCounts = {}
+  returnContentDictList = []
+  returnContentCharCountDict = {}
 
   with open(filePathToBook) as f:
     returnContentStringRaw = f.read()
     returnContentString = returnContentStringRaw.lower()
 
     for char in returnContentString:
-      if char in returnContentCharCounts:
-        returnContentCharCounts[char] += 1
-      else:
-        returnContentCharCounts[char] = 1
+      if char.isalpha():
+        returnContentCharCountDict[char] = returnContentCharCountDict.get(char, 0) + 1
 
-  return returnContentCharCounts
+    for key, value in returnContentCharCountDict.items():
+      returnContentDictList.append({"char": key, "num": value})
+
+    returnContentDictList.sort(reverse=True, key=lambda x: x["num"])
+
+  return returnContentDictList
