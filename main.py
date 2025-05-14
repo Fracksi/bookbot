@@ -12,7 +12,7 @@ def main():
       # Prints the total number of words in the book
       print("----------- Word Count ----------")
       totalWordCount = stats.get_book_wordCount(bookFileLocation)
-      print(f"found {totalWordCount} total words")
+      print(f"Found {totalWordCount} total words")
 
       # Prints the total number of characters in the book, per character count
       print("----------- Character Count ----------")
